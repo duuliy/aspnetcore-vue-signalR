@@ -20,3 +20,6 @@ Pack or use npm run build in time.
 
 
 
+## License
+
+[MIT](https://github.com/lijinke666/react-project-template/blob/master/LICENCE)
