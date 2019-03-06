@@ -57,15 +57,15 @@ module.exports = env => {
                 ]
             },
             plugins: [
-                new webpack.DllReferencePlugin({
+                new webpack.DllReferencePlugin({  //将一些`不做修改的依赖文件，提前打包，这样我们开发代码发布的时候就不需要再对这部分代码进行打包。manifest。`
                     context: __dirname,
                     manifest: require("./wwwroot/dist/vendor-manifest.json")
                 })
             ].concat(
-                isDevBuild
+                isDevBuild 
                     ? [
                           // Plugins that apply in development builds only
-                          new webpack.SourceMapDevToolPlugin({
+                          new webpack.SourceMapDevToolPlugin({   //细粒度控制路径
                               filename: "[file].map", // Remove this line if you prefer inline source maps
                               moduleFilenameTemplate: path.relative(
                                   bundleOutputDir,
@@ -75,8 +75,8 @@ module.exports = env => {
                       ]
                     : [
                           // Plugins that apply in production builds only
-                          new webpack.optimize.UglifyJsPlugin(),
-                          new ExtractTextPlugin("site.css")
+                          new webpack.optimize.UglifyJsPlugin(),   //压缩
+                          new ExtractTextPlugin("site.css")   //同config
                       ]
             )
         }
